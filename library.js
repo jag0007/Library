@@ -69,6 +69,3 @@ library.books.forEach(book => {
 root.appendChild(book_container);
 
 
-
-
-  
