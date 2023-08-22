@@ -5,21 +5,7 @@ class Book {
   }
 }
 
-class Library {
-  constructor() {
-    this.book_list = [];
-  }
-
-  add_book(new_book) {
-    this.book_list.push(new_book);
-  }
-
-  get books() {
-    return this.book_list;
-  }
-}
-
-class BookColorSelector {
+class ColorSelector {
   constructor() {
     this.color_options = ['red', 'blue'];
     this.next_color_index = 0;
@@ -38,34 +24,47 @@ class BookColorSelector {
   }
 }
 
-let library = new Library()
-library.add_book(new Book("Of Mice And Men", "John Steinbeck"));
-library.add_book(new Book("The Cay", "Theodore Taylor"));
+function create_book_div(book, color_selector) {
+    const new_book = document.createElement('div');
+    new_book.classList.add('book');
+    new_book.style.backgroundColor = color_selector.next_color; 
 
-const root = document.querySelector('.lib-root'); 
-const book_container = document.createElement('div');
-book_container.classList.add("book-container");
+    const book_title = document.createElement('p');
+    book_title.classList.add('title');
+    book_title.textContent = book.title; 
+    new_book.appendChild(book_title);
 
-const color_selector = new BookColorSelector();
+    const book_author = document.createElement('p');
+    book_author.classList.add('author');
+    book_author.textContent = book.author; 
+    new_book.appendChild(book_author);
 
-library.books.forEach(book => {
-  const new_book = document.createElement('div');
-  new_book.classList.add('book');
-  new_book.style.backgroundColor = color_selector.next_color; 
+    return new_book;
+}
 
-  const book_title = document.createElement('p');
-  book_title.classList.add('title');
-  book_title.textContent = book.title; 
-  new_book.appendChild(book_title);
+function create_book_display(books, class_name, colorSelection) {
+  let book_container = document.querySelector('div')
+  book_container.classList.add(class_name);
+  books.forEach(book => {
+    book_container.appendChild(create_book_div(book, colorSelection));
+  });
 
-  const book_author = document.createElement('p');
-  book_author.classList.add('author');
-  book_author.textContent = book.author; 
-  new_book.appendChild(book_author);
+  return book_container;
+}
 
-  book_container.appendChild(new_book);
+const library = [] 
+library.push(new Book("Of Mice And Men", "John Steinbeck"));
+library.push(new Book("The Cay", "Theodore Taylor"));
+
+const root = document.getElementById('book-shelf'); 
+const color_selector = new ColorSelector();
+
+root.appendChild(create_book_display(library, 'book-container', color_selector));
+
+const new_book_button = document.getElementsByClassName('add-book')[0];
+const new_book_dialog = document.getElementById('new-book-dialog');
+new_book_button.addEventListener("click", () => {
+  new_book_dialog.showModal();
 });
-
-root.appendChild(book_container);
 
 

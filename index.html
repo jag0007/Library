@@ -9,6 +9,22 @@
     <title>Library</title>
 </head>
 <body>
-     <div class="lib-root"></div>
+    <div class="header">
+        <p class="logoName">libraryApp</p>
+        <button class="log-in">log in</button>
+    </div>
+    <div id="book-shelf">
+        <div class="button-container">
+            <button class="add-book">+ Add Book</button>
+        </div>
+    </div>
+    <dialog id="new-book-dialog">
+        <form class="new-book-form" action="">
+            <p>Add New Book</p>
+            <input class="book-title-input" type="text" value="Title">
+            <input class="book-author-input" type="text" value="Author">
+            <input class="book-pages-input" type="text" value="Number Of Pages">
+        </form>
+    </dialog>
 </body>
 </html>

@@ -1,0 +1,41 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  --border-curves: 5px;
+}
+
+body {
+  background-color: lightblue;
+}
+
+.header {
+  background-color: lightseagreen;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  padding: 1em;
+}
+
+button {
+  font-size: 4vh;
+  border-radius: var(--border-curves);
+  padding: .15em;
+}
+
+#book-shelf {
+  display: flex;
+}
+
+.book {
+  border-radius: var(--border-curves);
+  margin: 5px;
+  padding: .5em;
+  height: 20vh;
+  width: 15vh;
+}
+
+.new-book-form {
+  display: flex;
+  flex-direction: column;
+}
