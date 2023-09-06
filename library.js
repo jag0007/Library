@@ -43,7 +43,7 @@ function create_book_div(book, color_selector) {
 }
 
 function create_book_display(books, class_name, colorSelection) {
-  let book_container = document.querySelector('div')
+  let book_container = document.createElement('div')
   book_container.classList.add(class_name);
   books.forEach(book => {
     book_container.appendChild(create_book_div(book, colorSelection));
