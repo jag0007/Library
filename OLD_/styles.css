@@ -1,0 +1,68 @@
+html,
+body,
+p {
+  padding: 0;
+  margin: 0;
+  --border-curves: 5px;
+}
+
+body {
+  background-color: lightblue;
+}
+
+.header {
+  background-color: lightseagreen;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  padding: 1em;
+}
+
+button {
+  font-size: 4vh;
+  border-radius: var(--border-curves);
+  padding: .15em;
+}
+
+#book-shelf {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  margin-top: 20px;
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.book {
+  border-radius: var(--border-curves);
+  padding: .5em;
+}
+
+.new-book-form {
+  display: flex;
+  font-weight: bold;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+}
+
+.new-book-form input {
+  width: 100%;
+}
+
+.form-buttons {
+  width: 100%;
+  display: flex;
+  justify-content: space-between; 
+}
+
+.new-book-form button {
+  font-size: 1rem;
+  width: 5em;
+}

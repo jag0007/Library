@@ -1,34 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <script src="library.js" defer></script>
-    <title>Library</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Library</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="library.js" defer></script>
 </head>
 <body>
-    <div class="header">
-        <p class="logoName">libraryApp</p>
-        <button class="log-in">log in</button>
-    </div>
-    <div id="book-shelf">
-        <div class="button-container">
-            <button class="add-book">+ Add Book</button>
-        </div>
-    </div>
-    <dialog id="new-book-dialog">
-        <form class="new-book-form" action="">
-            <p>Add New Book</p>
-            <input class="book-title-input" type="text" value="Title">
-            <input class="book-author-input" type="text" value="Author">
-            <input class="book-pages-input" type="text" value="Number Of Pages">
-            <div class="form-buttons">
-                <button class="submit-book">Add Book</button>
-                <button class="cancel">Cancel</button>
-            </div>
-        </form>
-    </dialog>
+  <p>Book Table</p>
+  <button class="add-book-button">Add</button>
+  <table>
+    <thead class="table-header">
+      <tr class="table-header-row">
+        <th class="title">Title</th>
+        <th class="author">Author</th>
+        <th class="remove-book"></th>
+      </tr>
+    </thead>
+    <tbody class="book-shelf"></tbody>
+  </table>
+  <dialog id="new-book-dialog">
+    <form class="new-book-form" action="">
+      <p>Add New Book</p>
+      <div class="input-block">
+        <label for="title">Title:</label>
+        <input class="book-title-input" id="title" type="text" default="Title">
+      </div>
+      <div class="input-block">
+        <label for="author">Author:</label>
+        <input class="book-author-input" id="author" type="text" default="Author">
+      </div>
+      <div class="input-block">
+        <label for="pages">Number of Pages:</label>
+        <input class="book-pages-input" id="pages" type="text" default="Number Of Pages">
+      </div>
+      <div class="form-buttons">
+        <button class="submit-book">Add</button>
+        <button class="cancel">Cancel</button>
+      </div>
+    </form>
+  </dialog>
 </body>
 </html>

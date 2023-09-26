@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <script src="library.js" defer></script>
+    <title>Library</title>
+</head>
+<body>
+    <div class="header">
+        <p class="logoName">libraryApp</p>
+        <button class="log-in">log in</button>
+    </div>
+    <div class="button-container">
+        <button class="add-book">+ Add Book</button>
+    </div>
+    <div id="book-shelf">
+    </div>
+    <dialog id="new-book-dialog">
+        <form class="new-book-form" action="">
+            <p>Add New Book</p>
+            <input class="book-title-input" type="text" value="Title">
+            <input class="book-author-input" type="text" value="Author">
+            <input class="book-pages-input" type="text" value="Number Of Pages">
+            <div class="form-buttons">
+                <button class="submit-book">Add</button>
+                <button class="cancel">Cancel</button>
+            </div>
+        </form>
+    </dialog>
+</body>
+</html>
