@@ -2,6 +2,7 @@ class Book {
   constructor(title, author) {
     this.title = title;
     this.author = author;
+    this.read = false;
   }
 }
 
@@ -9,13 +10,14 @@ function addBookToLibrary(title, author, library) {
   library.push(new Book(title, author));
 }
 
-function removeFromLibrary(title, author, library) {
-  library.splice(library.indexOf(new Book(title, author)), 1);
+function removeFromLibrary(index, library) {
+  library.splice(index, 1);
 }
 
-function createBookRow(book, library, container) {
+function createBookRow(book, library, container, book_index) {
   const new_book = document.createElement('tr');
   new_book.classList.add('book');
+  new_book.dataset.index = book_index;
 
   const title_data = document.createElement('td');
   title_data.classList.add('book-title');
@@ -25,22 +27,34 @@ function createBookRow(book, library, container) {
   author_data.classList.add('book-author');
   author_data.innerHTML = book.author;
 
+  const is_read = document.createElement('td');
+  is_read.classList.add('is-read');
+
+  const is_read_checkbox = document.createElement('input');
+  is_read_checkbox.setAttribute('type', 'checkbox');
+  is_read.appendChild(is_read_checkbox);
+
+  is_read_checkbox.addEventListener("click", (e) => {
+    const index = e.target.parentNode.parentNode.dataset.index;
+    library[index].read = e.target.checked; 
+    console.log(library);
+  });
+  
   const delete_book_button = document.createElement('button');
   delete_book_button.classList.add('delete-book-button');
   delete_book_button.innerHTML = 'Remove';
   const delete_book = document.createElement('td');
   delete_book.appendChild(delete_book_button);
 
-  var title = book.title;
-  var author = book.author;
-
-  delete_book_button.addEventListener("click", () => {
-    removeFromLibrary(title, author, library)
+  delete_book_button.addEventListener("click", (e) => {
+    const index = e.target.parentNode.parentNode.dataset.index;
+    removeFromLibrary(index, library);
     displayLibrary(library, container);
   });
 
   new_book.appendChild(title_data);
   new_book.appendChild(author_data);
+  new_book.appendChild(is_read);
   new_book.appendChild(delete_book);
 
   return new_book; 
@@ -48,10 +62,12 @@ function createBookRow(book, library, container) {
 
 function displayLibrary(library, container) {
   container.replaceChildren();
-
+  let i = 0;
   library.forEach(book => {
-    const new_book = createBookRow(book, library, container);
+    console.log(i);
+    const new_book = createBookRow(book, library, container, i);
     container.appendChild(new_book);
+    i += 1;
   });
 
 }
